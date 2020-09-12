@@ -8,26 +8,9 @@
     else{
         include 'partial/_dbconnect.php';
         $bid = $_GET['id']; 
-
+        // echo $bid;exit;
         $sql = "select * from blog where id='$bid'";
         $result = mysqli_query($conn, $sql);
-
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            $blog_title = $_POST['blog_title'];
-            $srt_dec = $_POST['blog_title'];
-            $blog = $_POST['blog'];
-            $date = date('Y-m-d H:i:s');
-            $sql = "UPDATE `blog` SET `blog_title`='$blog_title',`srt_dec`='$srt_dec',`blog`='$blog',`date`='$date' WHERE id = '$bid'";
-            $result = mysqli_query($conn, $sql);
-            if ($result == 1){
-                echo 'done';
-                header("location:dashboard.php");
-            }
-            else{
-                echo "error";
-            }
-        }
     }
 
     
@@ -75,8 +58,11 @@
             </li>
         </ul>
         <div class="container">
-            <form action="addblog.php" method="POST">
+            <form action="editfunc.php" method="GET" enctype="multipart/form-data">
             <?php while($row = mysqli_fetch_array($result)) { ?>
+                <div class="form-group">
+                <input type="file" name="xyz" value="<?php echo $row['img_file'];?>" />
+                </div>
                 <div class="form-group">
                     <label for="blog_title">Blog Title</label>
                     <input type="text" class="form-control" id="blog_title" name="blog_title" value="<?php echo $row['blog_title'];?>">
@@ -89,7 +75,7 @@
                     <label for="blog">Article</label>
                     <textarea class="form-control" id="blog" rows="12" name="blog"><?php echo $row['blog'];?></textarea>
                 </div>
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Submit</button>
+                <button class="btn btn-lg btn-danger btn-block" type="submit" name="submit">Submit</button>
             <?php }; ?>
             </form>
         </div>
