@@ -55,7 +55,7 @@ $result = mysqli_query($conn,"SELECT * FROM blog ORDER BY id ASC LIMIT $start_fr
                 <a class="nav-link"  href="addblog.php">Add Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="signup.php">Add Profile</a>
             </li>
         </ul>
         <div class="container">

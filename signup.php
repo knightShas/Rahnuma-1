@@ -1,6 +1,9 @@
 <?php
-    $showAlert = false;
-    $showError = false;
+    session_start();
+    if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] = "ok")) {
+        header("Location: login.php");
+        exit;
+    }
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         include 'partial/_dbconnect.php';
         
@@ -35,30 +38,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/slow.css">
-</head>
-<body class="anim text-center" style="padding-top: 180px;padding-left: 300px";
->
 
-        <div class="card" style="width: 18rem;">
+</head>
+<body>
+        <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand btn" href="#">Home</a>
+            <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active"> <?php echo $_SESSION['username'];?></a> 
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">Logout</a>
+            </li>           
+            </ul>
+        </nav>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.php">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="addblog.php">Add Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Add Profile</a>
+            </li>
+        </ul>
         <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">Sign Up</h6>
             <form class="form-signin" method="POST" action="signup.php">
                 <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
-                <br>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-                <br>
-                <label for="confirmPassword" class="sr-only">Confirm Password</label>
-                <input type="password" id="confirmPassword" class="form-control" placeholder="confirm Password" name="cpassword" required>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email">
                 </div>
-                <br>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="cpassword">Confirm Password</label>
+                    <textarea class="form-control" id="cpassword" name="cpassword"></textarea>
+                </div>
                 <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
                 </form>
-            <a href="login.php" class="card-link">Sign IN</a>
+
             </div>
+        </div>
         </div>
 
 

@@ -55,7 +55,7 @@
                 <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
                 
             </form>
-             <a href="signup.php" class="card-link">Sign up</a>
+
             
         </div>
         </div>

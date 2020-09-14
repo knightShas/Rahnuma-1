@@ -72,11 +72,9 @@
                 <a class="nav-link active" href="addblog.php">Add Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="signup.php">Add Profile</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            
         </ul>
         <div class="container" style="padding-top: 12px;">
                 <form action="addblog.php" method="POST" enctype="multipart/form-data"> 
@@ -93,13 +91,13 @@
                 </div>
                 <div class="form-group">
                     <label for="blog">Article</label>
-                    <textarea class="form-control" id="blog" rows="12" name="blog"></textarea>
+                    <textarea class="form-control" id="blog" rows="12" col="80" name="blog" id="editor"></textarea>
                 </div>
                 <button class="btn btn-lg btn-danger btn-block" type="submit">Submit</button>
             </form>
         </div>
         
-     
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

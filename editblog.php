@@ -48,17 +48,15 @@
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="addblog.php">Add Blog</a>
+                <a class="nav-link" href="addblog.php">Add Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link active" href="signup.php">Add Profile</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            
         </ul>
         <div class="container">
-            <form action="editfunc.php" method="GET" enctype="multipart/form-data">
+            <form action="editfunc.php?id=<?php echo $bid;?>" method="POST" enctype="multipart/form-data">
             <?php while($row = mysqli_fetch_array($result)) { ?>
                 <div class="form-group">
                 <input type="file" name="xyz" value="<?php echo $row['img_file'];?>" />
